@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Stock Quatity Calculation</title>
+	<script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <style type="text/css">
+  	
+
+  </style>
+</head>
+
+
+<body>
+Capital : <input type="text" name="" id="capital">
+Margin : <input type="text" name="" id="margin">
+Stock Price : <input type="text" name="" id="stockPrice">
+
+<input type="button" id="calculate" name="" value="Calculate">
+
+<table class="table">
+  <thead class="black white-text">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">10%</th>
+      <th scope="col">25%</th>
+      <th scope="col">50%</th>
+      <th scope="col">75%</th>
+      <th scope="col">100%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td><span id="tranchOne"></span></td>
+      <td><span id="tranchTwo"></span></td>
+      <td><span id="tranchThree"></span></td>
+      <td><span id="tranchFour"></span></td>
+      <td><span id="tranchFive"></span></td>
+    </tr>
+
+  </tbody>
+</table>
+
+</body>
+<script type="text/javascript">
+  	$(document).ready(function(){
+
+  		$('#calculate').click ( function() {
+  			var capital = parseFloat( $('#capital').val() );
+	  		var margin = $('#margin').val( );
+	  		var stockPrice = parseFloat( $('#stockPrice').val() );
+	  		var totalMargin =  parseFloat( capital * margin );
+
+	  		var tranchOne = $('#tranchOne').html( parseFloat( Math.round( (totalMargin/stockPrice * 10)/100 ) ) );
+	  		var tranchTwo = $('#tranchTwo').html( parseFloat( Math.round( (totalMargin/stockPrice * 25)/100 ) ) );
+	  		var tranchThree = $('#tranchThree').html( parseFloat( Math.round( (totalMargin/stockPrice * 50)/100 ) ) );
+	  		var tranchFour = $('#tranchFour').html( parseFloat( Math.round( (totalMargin/stockPrice * 75)/100 ) ) );
+	  		var tranchFive = $('#tranchFive').html( parseFloat( Math.round( (totalMargin/stockPrice * 100)/100 ) ) );
+
+	  		//console.log( tranchOne);
+  		})
+  		
+
+  	})
+  </script>
+</html>
